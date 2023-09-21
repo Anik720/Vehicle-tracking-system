@@ -4,6 +4,16 @@
 
 The Mini Vehicle Tracking Dashboard is a simple web-based application designed to display real-time information about multiple vehicles. It allows users to visualize the positions and statuses of vehicles on a map. This README file provides an overview of the project, its requirements, and how to set it up.
 
+
+## Getting Started
+
+- in backend for installing the dependies use the command npm i
+- for running the development server use the command npm run dev
+- hit this URL if you running your server in locally: localhost:3000 
+- Note: if you running your server locally and want to test the project locally then change the URl https://mini-vehicle-tracking-system.onrender.com to http://localhost:3000 in the index.html and script.js file where the URL need to be changed.
+
+
+
 ## Requirements
 
 ### Front-end
@@ -30,9 +40,7 @@ The Mini Vehicle Tracking Dashboard is a simple web-based application designed t
 
 - A  eature includes a simple graph or chart that displays metrics like the distance covered by each vehicle over time.
 
-## Getting Started
 
-- in backend installing the dependies use the command npm i
 
 
 
