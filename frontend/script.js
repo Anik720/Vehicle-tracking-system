@@ -122,13 +122,13 @@ function updateVehicleDistanceChart(vehicle) {
 }
 
 document.addEventListener("DOMContentLoaded", (event) => {
-  let socket = io.connect("http://localhost:3000");
+  let socket = io.connect("https://mini-vehicle-tracking-system.onrender.com");
 
   socket.on("vehicleUpdated", (data) => {
     updateVehicleData(data);
   });
 
-  fetch("http://localhost:3000/vehicles")
+  fetch("https://mini-vehicle-tracking-system.onrender.com/vehicles")
     .then((response) => response.json())
     .then((data) => {
       data.forEach((vehicle) => {
@@ -173,7 +173,7 @@ function updateVehicleData(vehicle) {
   updateVehicleDistanceChart(vehicle);
 
   // Also, update the table here with the latest data
-  fetch("http://localhost:3000/vehicles")
+  fetch("https://mini-vehicle-tracking-system.onrender.com/vehicles")
     .then((response) => response.json())
     .then((data) => {
       const filterMovingCheckbox = document.getElementById("filter-moving");
