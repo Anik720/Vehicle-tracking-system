@@ -105,26 +105,63 @@ function calculateDistance(coord1, coord2) {
   return d;
 }
 
+// function simulateUpdates() {
+//   setInterval(() => {
+//     vehicleData.forEach((vehicle) => {
+//       // Save previous coordinates
+//       let prevCoordinates = [...vehicle.coordinates];
+
+//       // Update the vehicle data (here it's just simulating a small change in coordinates)
+//       vehicle.coordinates[0] += Math.random() * 0.01 - 0.005;
+//       vehicle.coordinates[1] += Math.random() * 0.01 - 0.005;
+
+//       // Randomly update the status
+//       vehicle.status = Math.random() > 0.5 ? "moving" : "idle";
+
+//       // Calculate the distance using the Haversine formula and add to the total distance
+//       let distance = calculateDistance(prevCoordinates, vehicle.coordinates);
+//       vehicle.distance += distance;
+
+//       // Emit the updated vehicle data
+//       io.emit("vehicleUpdated", vehicle);
+//     });
+//   }, 3000); // Change interval as needed
+// }
+
 function simulateUpdates() {
   setInterval(() => {
     vehicleData.forEach((vehicle) => {
       // Save previous coordinates
       let prevCoordinates = [...vehicle.coordinates];
 
-      // Update the vehicle data (here it's just simulating a small change in coordinates)
-      vehicle.coordinates[0] += Math.random() * 0.01 - 0.005;
-      vehicle.coordinates[1] += Math.random() * 0.01 - 0.005;
+      // Generate small random changes in latitude and longitude
+      const latitudeChange = (Math.random() * 0.01 - 0.005) / 2;
+      const longitudeChange = (Math.random() * 0.01 - 0.005) / 2;
 
-      // Randomly update the status
-      vehicle.status = Math.random() > 0.5 ? "moving" : "idle";
+      // Calculate the potential new coordinates
+      const newLatitude = vehicle.coordinates[0] + latitudeChange;
+      const newLongitude = vehicle.coordinates[1] + longitudeChange;
 
-      // Calculate the distance using the Haversine formula and add to the total distance
-      let distance = calculateDistance(prevCoordinates, vehicle.coordinates);
-      vehicle.distance += distance;
+      // Check if the potential new coordinates exceed 40 km
+      const distance = calculateDistance(prevCoordinates, [newLatitude, newLongitude]);
 
-      // Emit the updated vehicle data
-      io.emit("vehicleUpdated", vehicle);
+      if (distance <= 40) {
+        // Update the coordinates
+        vehicle.coordinates[0] = newLatitude;
+        vehicle.coordinates[1] = newLongitude;
+
+        // Randomly update the status
+        vehicle.status = Math.random() > 0.5 ? "moving" : "idle";
+
+        // Calculate the distance using the Haversine formula and add to the total distance
+        vehicle.distance += distance;
+
+        // Emit the updated vehicle data
+        io.emit("vehicleUpdated", vehicle);
+      }
+      // If the potential new coordinates exceed 40 km, do nothing
     });
   }, 3000); // Change interval as needed
 }
+
 simulateUpdates()
