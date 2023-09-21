@@ -20,11 +20,11 @@ const io = new Server(server, {
 });
 
 let vehicleData = [
-  { id: 1, status: "moving", coordinates: [51.505, -0.09], distance: 0 },
-  { id: 2, status: "idle", coordinates: [51.51, -0.1], distance: 0 },
-  { id: 3, status: "idle", coordinates: [51.51, -0.1], distance: 0 },
-  { id: 4, status: "idle", coordinates: [51.51, -0.1], distance: 0 },
-  { id: 5, status: "idle", coordinates: [51.51, -0.1], distance: 0 },
+  { id: 1, status: "moving", coordinates: [23.8103, 90.4125], distance: 0 },
+  { id: 2, status: "idle", coordinates: [23.8103, 90.4125], distance: 0 },
+  { id: 3, status: "idle", coordinates: [23.8103, 90.4125], distance: 0 },
+  { id: 4, status: "idle", coordinates: [23.8103, 90.4125], distance: 0 },
+  { id: 5, status: "idle", coordinates: [23.8103, 90.4125], distance: 0 },
 ];
 
 io.on("connection", (socket) => {

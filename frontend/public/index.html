@@ -18,6 +18,7 @@
     <script>
       var socket = io("https://mini-vehicle-tracking-system.onrender.com");
       // var socket = io("https://mini-vehicle-tracking-system.onrender.com/");
+
     </script>
 
     <title>Vehicle Tracking Dashboard</title>
@@ -57,7 +58,7 @@
       .filters {
         margin-bottom: 20px;
       }
-      /* 
+/* 
       #vehicle-list {
         overflow-y: auto;
         flex: 1;
@@ -75,68 +76,24 @@
 
       #vehicle-list th:nth-child(1),
       #vehicle-list td:nth-child(1) {
-        width: 30%;
+        width: 30%; /* Adjust the width as necessary */
       }
 
       #vehicle-list th:nth-child(2),
       #vehicle-list td:nth-child(2) {
-        width: 40%;
+        width: 40%; /* Adjust the width as necessary */
       }
 
       #vehicle-list th:nth-child(3),
       #vehicle-list td:nth-child(3) {
-        width: 30%;
+        width: 30%; /* Adjust the width as necessary */
       }
 
       #vehicleDistanceChart {
         width: 100%;
         height: 200px;
       }
-      .filters {
-        display: flex;
-        align-items: center;
-      }
 
-      .filters label {
-        margin-right: 15px;
-        font-size: 16px;
-        cursor: pointer;
-        user-select: none;
-        position: relative;
-      }
-
-      .filters input[type="checkbox"] {
-        position: absolute;
-        opacity: 0;
-      }
-
-      .filters input[type="checkbox"]::before {
-        content: "";
-        display: block;
-        width: 18px;
-        height: 18px;
-        border: 2px solid #333;
-        background-color: white;
-        position: absolute;
-        top: 0;
-        left: 0;
-      }
-
-      .filters input[type="checkbox"]:checked::before {
-        background-color: #007bff;
-        border: 2px solid #007bff;
-      }
-
-      .filters input[type="checkbox"]:checked::before::after {
-        content: "\2713";
-        font-size: 14px;
-        color: white;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        display: block;
-      }
       @media (min-width: 768px) {
         .container {
           flex-direction: row;
