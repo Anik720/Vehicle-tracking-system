@@ -35,8 +35,4 @@ The Mini Vehicle Tracking Dashboard is a simple web-based application designed t
 - in backend installing the dependies use the command npm i
 
 
-1. **Clone the Repository**:
 
-   ```bash
-   git clone https://github.com/yourusername/vehicle-tracking-dashboard.git
-   cd vehicle-tracking-dashboard
