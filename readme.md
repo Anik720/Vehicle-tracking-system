@@ -7,10 +7,14 @@ The Mini Vehicle Tracking Dashboard is a simple web-based application designed t
 
 ## Getting Started
 
-- in backend for installing the dependies use the command npm i
-- for running the development server use the command npm run dev
-- hit this URL if you running your server in locally: localhost:3000 
-- Note: if you running your server locally and want to test the project locally then change the URl https://mini-vehicle-tracking-system.onrender.com to http://localhost:3000 in the index.html and script.js file where the URL need to be changed.
+- To set up the backend dependencies, use the command `npm i`.
+
+- To run the development server, use the command `npm run dev`.
+
+- If you are running your server locally, access the project by visiting `localhost:3000` in your web browser.
+
+**Note:** If you are running your server locally and want to test the project locally, make sure to change the URL from `https://mini-vehicle-tracking-system.onrender.com` to `http://localhost:3000` in the `index.html` and `script.js` files where the URL needs to be updated.
+
 
 
 
