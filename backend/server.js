@@ -16,7 +16,7 @@ const io = new Server(server, {
 });
 
 app.use(express.json());
-app.use("/", express.static(path.join(__dirname, "frontend")));
+app.get("/", express.static(path.join(__dirname, "frontend")));
 let vehicleData = [
   { id: 1, status: "moving", coordinates: [51.505, -0.09], distance: 0 },
   { id: 2, status: "idle", coordinates: [51.51, -0.1], distance: 0 },
