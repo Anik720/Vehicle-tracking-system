@@ -2,10 +2,14 @@ const express = require("express");
 const cors = require("cors");
 const http = require("http");
 const path = require("path");
+const fs = require("fs");
 const { Server } = require("socket.io");
 
 const app = express();
 app.use(cors());
+
+app.use(express.json());
+app.use(express.static(path.join(__dirname, "../frontend/public")));
 const server = http.createServer(app);
 
 const io = new Server(server, {
@@ -15,8 +19,6 @@ const io = new Server(server, {
   },
 });
 
-app.use(express.json());
-app.get("/", express.static(path.join(__dirname, "frontend")));
 let vehicleData = [
   { id: 1, status: "moving", coordinates: [51.505, -0.09], distance: 0 },
   { id: 2, status: "idle", coordinates: [51.51, -0.1], distance: 0 },
@@ -43,7 +45,19 @@ io.on("connection", (socket) => {
     console.log("Client disconnected");
   });
 });
+// app.get("/", (req, res) => {
+//   // Read the static file (e.g., index.html) and send it in the response
+//   const indexPath = path.join(__dirname, "../frontend/public/index.html");
 
+//   fs.readFile(filePath, "utf8", (err, data) => {
+//     if (err) {
+//       console.error(err);
+//       res.status(500).send("Internal Server Error");
+//     } else {
+//       res.send(data);
+//     }
+//   });
+// });
 app.get("/vehicles", (req, res) => {
   res.json(vehicleData);
 });
