@@ -45,19 +45,7 @@ io.on("connection", (socket) => {
     console.log("Client disconnected");
   });
 });
-// app.get("/", (req, res) => {
-//   // Read the static file (e.g., index.html) and send it in the response
-//   const indexPath = path.join(__dirname, "../frontend/public/index.html");
 
-//   fs.readFile(filePath, "utf8", (err, data) => {
-//     if (err) {
-//       console.error(err);
-//       res.status(500).send("Internal Server Error");
-//     } else {
-//       res.send(data);
-//     }
-//   });
-// });
 app.get("/vehicles", (req, res) => {
   res.json(vehicleData);
 });

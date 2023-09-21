@@ -23,35 +23,6 @@ function initializeChart() {
   drawChart([]);
 }
 
-// function drawChart(data) {
-//   let dataTable = new google.visualization.DataTable();
-//   dataTable.addColumn("datetime", "Time");
-//   dataTable.addColumn("number", "Distance");
-//   dataTable.addRows(data);
-
-//   let options = {
-//     title: "Vehicle Distance Over Time",
-//     curveType: "function",
-//     legend: { position: "bottom" },
-//     hAxis: { title: "Time" },
-//     vAxis: { title: "Distance" },
-//   };
-
-//   vehicleDistanceChart.draw(dataTable, options);
-// }
-
-// function updateVehicleDistanceChart(vehicle) {
-//   let currentTime = new Date();
-
-//   if (!vehicleDistanceChartData[vehicle.id]) {
-//     vehicleDistanceChartData[vehicle.id] = [];
-//   }
-
-//   vehicleDistanceChartData[vehicle.id].push([currentTime, vehicle.distance]);
-
-//   drawChart(vehicleDistanceChartData[vehicle.id]);
-// }
-
 function drawChart(data) {
   if (data.length === 0) {
     return; // Return early if data is empty
@@ -197,9 +168,14 @@ function updateVehicleData(vehicle) {
 function addVehicleToMap(vehicle) {
   let marker = L.marker(vehicle.coordinates).addTo(map);
   marker.vehicleData = vehicle;
-  
-  marker.bindTooltip(`Vehicle ID: ${vehicle.id}`, { permanent: true, direction: 'top' }).openTooltip();
-  
+
+  marker
+    .bindTooltip(`Vehicle ID: ${vehicle.id}`, {
+      permanent: true,
+      direction: "top",
+    })
+    .openTooltip();
+
   marker.bindPopup(
     `Vehicle ID: ${vehicle.id}<br>Status: ${vehicle.status}<br>Distance: ${vehicle.distance}`
   );
@@ -232,15 +208,7 @@ function updateTable(data) {
     tbody.appendChild(row);
   });
 }
-// function addVehicleToList(vehicle) {
-//   let vehicleList = document.getElementById("vehicle-list");
-//   let vehicleItem = document.createElement("div");
-//   vehicleItem.className = "vehicle-item";
-//   vehicleItem.vehicleData = vehicle;
-//   vehicleItem.innerHTML = `Vehicle ID: ${vehicle.id} <span>Status: ${vehicle.status}</span> <span>Distance: ${vehicle.distance}</span>`;
-//   vehicleList.appendChild(vehicleItem);
-//   vehicleListItems[vehicle.id] = vehicleItem;
-// }
+
 function addVehicleToList(vehicle) {
   let vehicleList = document.querySelector("#vehicle-list tbody");
   let vehicleItem = document.createElement("tr");
@@ -266,21 +234,6 @@ function addVehicleToList(vehicle) {
 function applyFilters() {
   let showMoving = document.getElementById("filter-moving").checked;
   let showIdle = document.getElementById("filter-idle").checked;
-
-  // for (let id in vehicleMarkers) {
-  //   let vehicle = vehicleMarkers[id].vehicleData;
-  //   let shouldShow =
-  //     (showMoving && vehicle.status === "moving") ||
-  //     (showIdle && vehicle.status === "idle");
-
-  //   if (shouldShow) {
-  //     vehicleMarkers[id].addTo(map);
-  //     vehicleListItems[id].style.display = "";
-  //   } else {
-  //     vehicleMarkers[id].remove();
-  //     vehicleListItems[id].style.display = "none";
-  //   }
-  // }
 
   let tableRows = document.querySelectorAll("#vehicle-list tbody tr");
   tableRows.forEach((row) => {
