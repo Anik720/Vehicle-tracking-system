@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <script
+      type="text/javascript"
+      src="https://www.gstatic.com/charts/loader.js"
+    ></script>
+
+    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io("http://localhost:3000");
+    </script>
+
+    <title>Vehicle Tracking Dashboard</title>
+
+    <style>
+      /* Your CSS goes here, for example: */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+      }
+
+      .container {
+        display: flex;
+        height: 100vh;
+        flex-direction: column;
+      }
+
+      #map,
+      .sidebar {
+        width: 100%;
+        height: 50%;
+      }
+
+      .sidebar {
+        background-color: #f8f9fa;
+        padding: 20px;
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .sidebar h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+
+      .filters {
+        margin-bottom: 20px;
+      }
+/* 
+      #vehicle-list {
+        overflow-y: auto;
+        flex: 1;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+      } */
+      #vehicle-list th,
+      #vehicle-list td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ccc;
+        margin: 0;
+      }
+
+      #vehicle-list th:nth-child(1),
+      #vehicle-list td:nth-child(1) {
+        width: 30%; /* Adjust the width as necessary */
+      }
+
+      #vehicle-list th:nth-child(2),
+      #vehicle-list td:nth-child(2) {
+        width: 40%; /* Adjust the width as necessary */
+      }
+
+      #vehicle-list th:nth-child(3),
+      #vehicle-list td:nth-child(3) {
+        width: 30%; /* Adjust the width as necessary */
+      }
+
+      #vehicleDistanceChart {
+        width: 100%;
+        height: 200px;
+      }
+
+      @media (min-width: 768px) {
+        .container {
+          flex-direction: row;
+        }
+
+        #map,
+        .sidebar {
+          height: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="map"></div>
+      <div class="sidebar">
+        <h1>Vehicle Tracking Dashboard</h1>
+        <div
+          id="vehicleDistanceChart"
+          style="width: 600px; height: 200px"
+        ></div>
+        <div class="filters">
+          <label> <input type="checkbox" id="filter-moving" /> Moving </label>
+          <label> <input type="checkbox" id="filter-idle" /> Idle </label>
+        </div>
+        <!-- <div id="vehicle-list"></div> -->
+        <div id="vehicle-list">
+          <table>
+            <thead>
+              <tr>
+                <th>Vehicle ID</th>
+                <th>Status</th>
+                <th>Distance (km)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- The vehicle rows will be dynamically inserted here by your JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
